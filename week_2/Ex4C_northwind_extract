@@ -1,0 +1,26 @@
+USE northwind;
+
+/*
+a) The table that holds the items Northwind sells is the Products table.
+b) The table that holds the types or categories of the items Northwind sells is the Categories table.
+*/
+
+SELECT * 
+FROM Employees;
+-- The Northwind employee whose name makes it look like she is a bird is Margaret Peacock.
+
+SELECT * 
+FROM Products;
+-- This query returns 77 records.
+-- Using the toolbar at the top of the query pane, you can change the row limit to 10 to retrieve only 10 rows.
+-- BONUS: You can also limit the number of rows returned by writing the query as SELECT * FROM Products LIMIT 10;
+-- Source used for the bonus answer: MySQL LIMIT syntax.
+
+SELECT * 
+FROM Categories;
+-- The category id of Seafood is 8.
+
+SELECT OrderID, OrderDate, ShipName, ShipCountry
+FROM Orders
+LIMIT 50;
+-- Export this result set as Ex4C_order_sample.csv
