@@ -1,0 +1,65 @@
+USE northwind;
+
+SElECT *
+FROM Products
+
+-- Write a query to list the product id, product name, and unit price of every product that NorthWind sells.
+SELECT ProductID, ProductName, UnitPrice
+FROM Products;
+
+-- Write a query to identify the products where the unit price is $7.50 or less. 
+SELECT ProductID, ProductName, UnitPrice
+FROM Products
+Where UnitPrice <= 7.50
+	Order BY UNitPrice Desc;
+    
+-- What are the products that we carry where we have no units on hand, but 1 or more units are on backorder? Write a query that answers this question.
+SELECT ProductID, ProductName, UnitsInStock, UnitsOnOrder
+FROM Products
+Where UnitsInStock = 0 
+	and UnitsOnOrder > 1
+    
+-- Shows how Products identifies category type
+SELECT ProductID, ProductName, CategoryID
+FROM Products;
+
+-- List of all categories
+SELECT CategoryID, CategoryName
+FROM Categories;
+
+-- List of all seafood items we carry
+SELECT Products.ProductID, Products.ProductName, Categories.CategoryName
+FROM Products
+JOIN Categories
+ON Products.CategoryID = Categories.CategoryID
+WHERE Categories.CategoryName = 'Seafood';
+
+-- See how Products identifies the supplier
+SELECT ProductID, ProductName, SupplierID
+FROM Products;
+
+-- See all supplier info
+SELECT *
+FROM Suppliers;
+
+-- Find the SupplierID for Tokyo Traders
+SELECT SupplierID, CompanyName
+FROM Suppliers
+WHERE CompanyName = 'Tokyo Traders';
+
+-- Find all products from Tokyo Traders
+SELECT Products.ProductID, Products.ProductName, Products.SupplierID, Suppliers.CompanyName
+FROM Products
+JOIN Suppliers
+ON Products.SupplierID = Suppliers.SupplierID
+WHERE Suppliers.CompanyName = 'Tokyo Traders';
+
+
+-- Count employees
+SELECT COUNT(*) AS TotalEmployees
+FROM Employees;
+
+-- Employees with "manager" in their title
+SELECT EmployeeID, FirstName, LastName, Title
+FROM Employees
+WHERE Title LIKE '%manager%';
