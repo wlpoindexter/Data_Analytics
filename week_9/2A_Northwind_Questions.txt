@@ -1,0 +1,70 @@
+Northwind Review Notes
+
+Categories
+- Primary Key: CategoryID
+- A record represents one product category.
+- Useful columns: CategoryID, CategoryName.
+- Not useful columns: Description and Picture because they are long text/binary fields.
+
+Customers
+- Primary Key: CustomerID
+- A record represents one customer/company.
+- Useful columns: CustomerID, CompanyName, ContactName, ContactTitle, City, Region, PostalCode, Country.
+- Address, Phone, and Fax are not needed for Power BI analysis.
+
+Employees
+- Primary Key: EmployeeID
+- A record represents one employee.
+- Useful columns: EmployeeID, LastName, FirstName, Title, TitleOfCourtesy, BirthDate, HireDate, City, Region, PostalCode, Country, ReportsTo.
+- BirthDate can be used to calculate employee age. HireDate can be used to calculate years employed.
+- Photo, Notes, HomePhone, Extension, and PhotoPath are not useful for this model.
+
+EmployeeTerritories
+- Primary Key: EmployeeID and TerritoryID
+- Foreign Keys: EmployeeID points to Employees; TerritoryID points to Territories.
+- A record represents an employee assigned to a sales territory.
+- Useful for connecting employees to territories.
+
+Order Details
+- Primary Key: OrderID and ProductID
+- Foreign Keys: OrderID points to Orders; ProductID points to Products.
+- A record represents one product line item in an order.
+- Useful columns: OrderID, ProductID, UnitPrice, Quantity, Discount.
+- UnitPrice, Quantity, and Discount can be used to calculate Sales Amount and Discount Amount.
+
+Orders
+- Primary Key: OrderID
+- Foreign Keys: CustomerID points to Customers; EmployeeID points to Employees; ShipVia points to Shippers.
+- A record represents one customer order.
+- Useful columns: OrderID, CustomerID, EmployeeID, OrderDate, RequiredDate, ShippedDate, ShipVia, Freight, ShipName, ShipCity, ShipRegion, ShipPostalCode, ShipCountry.
+- ShipAddress is not needed because street-level address is too detailed for this report.
+
+Products
+- Primary Key: ProductID
+- Foreign Keys: SupplierID points to Suppliers; CategoryID points to Categories.
+- A record represents one product sold by Northwind.
+- Useful columns: ProductID, ProductName, SupplierID, CategoryID, QuantityPerUnit, UnitPrice, UnitsInStock, UnitsOnOrder, ReorderLevel, Discontinued.
+- UnitPrice and inventory columns can be used for product and inventory analysis.
+
+Region
+- Primary Key: RegionID
+- A record represents a sales region.
+- Useful columns: RegionID, RegionDescription.
+
+Shippers
+- Primary Key: ShipperID
+- A record represents one shipping company.
+- Useful columns: ShipperID and CompanyName.
+- Phone is not needed for analysis.
+
+Suppliers
+- Primary Key: SupplierID
+- A record represents one product supplier.
+- Useful columns: SupplierID, CompanyName, ContactName, ContactTitle, City, Region, PostalCode, Country.
+- Address, Phone, Fax, and HomePage are not needed for analysis.
+
+Territories
+- Primary Key: TerritoryID
+- Foreign Key: RegionID points to Region.
+- A record represents one sales territory.
+- Useful columns: TerritoryID, TerritoryDescription, RegionID.
